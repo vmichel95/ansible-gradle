@@ -1,2 +1,52 @@
 ---
-# tasks file for ansible-gradle
+- name: look for gradle installation...
+  become: yes
+  stat:
+    path: '{{ gradle_install_dir }}'
+  changed_when: false
+  register: gradle_binary
+- when: not gradle_binary.stat.exists
+  block:
+    - name: download...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ gradle_zip_url }}'
+        dest: /tmp/{{ gradle_zip }}
+        checksum: '{{ gradle_checksum }}'
+        timeout: '{{ gradle_timeout_seconds }}'
+        mode: 0644
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ gradle_zip }}
+        dest: '{{ gradle_parent_install_dir }}'
+        creates: '{{ gradle_install_dir }}'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{ gradle_zip }}
+        state: absent
+
+- name: link...
+  become: yes
+  become_user: root
+  file:
+    src: '{{ gradle_install_dir }}'
+    dest: '{{ gradle_link_dir }}'
+    state: link
+
+- name: add to default path...
+  become: yes
+  become_user: root
+  with_items:
+    - f: gradle.sh
+      d: /etc/profile.d
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{item.f}}'
+    mode: '{{ item.m|default("0644") }}'
