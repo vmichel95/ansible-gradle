@@ -39,6 +39,7 @@
     src: '{{ gradle_install_dir }}'
     dest: '{{ gradle_link_dir }}'
     state: link
+    force: true
 
 - name: add to default path...
   become: yes
