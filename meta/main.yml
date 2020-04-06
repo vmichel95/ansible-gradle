@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  author: Victor Michel
+  description: installs gradle
+  company: BlackRock Financial Management
+  license: 
+    - MIT
+  min_ansible_version: 2.0
+  galaxy_tags: 
+    - development
+  platforms:
+  - name: EL
+    versions:
+      - all
+  - name: Fedora
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+  - name: Alpine
+    versions:
+      - all
+  - name: Archlinux
+    versions:
+      - all
+  - name: Debian
+    versions:
+      - buster
+      - jessie
+      - stretch
+  role_name: gradle
+dependencies: []
+  
