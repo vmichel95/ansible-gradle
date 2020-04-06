@@ -31,4 +31,3 @@ galaxy_info:
       - stretch
   role_name: gradle
 dependencies: []
-  
