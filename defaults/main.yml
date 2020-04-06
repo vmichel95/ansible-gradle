@@ -1,6 +1,6 @@
 ---
 gradle_ver: '6.3'
-gradle_mirror:  https://gradle.org/next-steps #?version=6.3&format=bin
+gradle_mirror:  https://downloads.gradle-dn.com/distributions
 gradle_parent_install_dir: /usr/local
 gradle_timeout_seconds: 60
 gradle_checksums: 
