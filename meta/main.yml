@@ -30,4 +30,6 @@ galaxy_info:
       - jessie
       - stretch
   role_name: gradle
-dependencies: []
+dependencies:
+- role: andrewrothstein.unarchive-deps
+  version: v1.1.2
