@@ -1,0 +1,4 @@
+---
+- homebrew:
+    name: gradle
+    state: present

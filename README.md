@@ -1,7 +1,7 @@
 vmichel95.gradle
 =========
 
-Installs and configures [gradle](https://gradle.org/)
+Install [gradle](https://gradle.org/)
 
 Requirements
 ------------
@@ -12,6 +12,8 @@ Role Variables
 --------------
 
 See [defaults/main.yml](defaults/main.yml)
+
+> Note: If gradle_installer is toggled between Homebrew (brew) and archived binary (bin) mode, please make sure the executable is re-linked if you want to leverage the Homebrew version: `brew unlink gradle && brew link gradle`
 
 Dependencies
 ------------
